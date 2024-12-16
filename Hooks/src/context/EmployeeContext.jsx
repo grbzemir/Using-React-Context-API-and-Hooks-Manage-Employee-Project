@@ -1,10 +1,12 @@
 import React from 'react'
 import { createContext } from 'react'
+import { useState } from 'react'
 
 export const EmployeeContext = createContext();
 
-const EmployeeContextProvider = () => {
-    const [employees, setEmployees] = useState([
+const EmployeeContextProvider = (props) => {
+
+    const [employees] = useState([
         { id: 1, name: 'Emircan Gürbüz', email: 'eyetkingurbuz@gmail.com', address: '123 Main St, İstanbul, Türkiye', phone: '(532) 123-4567' },
         { id: 2, name: 'Tuğba Ateş', email: 'tgbgurbuz@gmail.com', address: '456 Elm St, Ankara, Türkiye', phone: '(532) 765-4321' },
         { id: 3, name: 'Eren Efe Yıldız', email: 'ernefeyldz@gmail.com', address: '789 Oak St, İzmir, Türkiye', phone: '(532) 246-8102' },
@@ -14,9 +16,11 @@ const EmployeeContextProvider = () => {
 
     return (
         <div>
-
+            <EmployeeContext.Provider>
+                {props.children}
+            </EmployeeContext.Provider>
         </div>
     )
 }
 
-export default EmployeeContext
+export default EmployeeContextProvider
