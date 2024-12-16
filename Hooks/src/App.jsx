@@ -32,6 +32,7 @@ function App() {
 
 export default App
 
+//Hook aslında javascript fonksiyonudur bunu unutma 
 //Hooks daha etkili ve düzgün bir şekilde kod yazmamızı sağlar.
 //class component yerine function component kullanmamızı sağlar.
 // useState, useEffect, useContext, useReducer, useMemo, useCallback, useRef, useImperativeHandle, useLayoutEffect, useDebugValue gibi hooklar kullanmamızı sağlar.
