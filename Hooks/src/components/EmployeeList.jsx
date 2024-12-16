@@ -3,6 +3,10 @@ import Employee from './Employee'
 import { useState } from 'react'
 
 const EmployeeList = () => {
+
+    //useState, renderlar arasında veri tutmayı sağlar. useState, renderlar arasında verimizi tutmayı sağlayan bir React Hookudu
+
+
     return (
         <table className="table table-striped table-hover">
             <thead>
@@ -15,7 +19,7 @@ const EmployeeList = () => {
                 </tr>
             </thead>
             <tbody>
-                <Employee />
+                <Employee employees={employees} />
             </tbody>
         </table>
     )
