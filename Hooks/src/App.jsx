@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import EmployeeList from './components/EmployeeList'
+import EmployeeContextProvider from './context/EmployeeContext'
 
 function App() {
 
