@@ -1,25 +1,29 @@
-import React, { useContext } from 'react'
-import Employee from './Employee'
-import { EmployeeContext } from '../context/EmployeeContext'
-import { Button } from 'react-bootstrap';
-
+import React, { useContext, useState } from 'react';
+import Employee from './Employee';
+import { EmployeeContext } from '../context/EmployeeContext';
+import { Button, Modal } from 'react-bootstrap';
+import AddForm from './AddForm'; // AddForm bileşenini import ediyoruz
 
 const EmployeeList = () => {
-
-    //useState, renderlar arasında veri tutmayı sağlar. useState, renderlar arasında verimizi tutmayı sağlayan bir React Hookudu
-
-    //Gönderirken useContext kullanarak contextin kendisin yolluyoruz.
     const { employees } = useContext(EmployeeContext);
+
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     return (
         <>
             <div className="table-title">
                 <div className="row">
-                    <div className="col-sm-6">
+                    <div className="col-sm-6 text-start">
                         <h2>Manage <b>Employees</b></h2>
                     </div>
                     <div className="col-sm-6">
-                        <Button onClick={handleShow} className="btn btn-success text-white" data-toggle="modal"><i className="material-icons">&#xE147;</i> <span>Add New Employee</span></Button>
+                        <Button onClick={handleShow} className="btn btn-success text-white" data-toggle="modal">
+                            <i className="material-icons">&#xE147;</i>
+                            <span>Add New Employee</span>
+                        </Button>
                     </div>
                 </div>
             </div>
@@ -38,8 +42,8 @@ const EmployeeList = () => {
                 </tbody>
             </table>
 
-            <Modal>
-                <Modal.Header>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header className="modal-header" closeButton>
                     <Modal.Title>
                         Add Employee
                     </Modal.Title>
@@ -47,13 +51,14 @@ const EmployeeList = () => {
                 <Modal.Body>
                     <AddForm />
                 </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Close Modal
+                    </Button>
+                </Modal.Footer>
             </Modal>
-            <Modal.Footer>
-                <Button variant="secondary" onClick={() => setModalShow(false)}>Close Button</Button>
-            </Modal.Footer>
         </>
-    )
+    );
+};
 
-}
-
-export default EmployeeList
+export default EmployeeList;
