@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import Employee from './Employee';
 import { EmployeeContext } from '../context/EmployeeContext';
 import { Button, Modal } from 'react-bootstrap';
-import AddForm from './AddForm'; // AddForm bileşenini import ediyoruz
+import AddForm from './AddForm';
 
 const EmployeeList = () => {
     const { employees } = useContext(EmployeeContext);
