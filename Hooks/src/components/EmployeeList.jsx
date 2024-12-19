@@ -24,15 +24,15 @@ const EmployeeList = () => {
 
     //UseRef ile component içindeki componentin tekrardan render edilmesini sağladık ve current özelliği verdik
 
-    const myRef = useRef(null);
-    console.log(myRef.current);
+    // const myRef = useRef(null);
+    // console.log(myRef.current);
 
-    const onButtonClick = () => {
+    // const onButtonClick = () => {
 
-        console.log(myRef.current);
-        myRef.current.focus();
+    //     console.log(myRef.current);
+    //     myRef.current.focus();
 
-    };
+    // };
 
 
     return (
@@ -61,7 +61,13 @@ const EmployeeList = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <Employee employees={employees} />
+                    {
+                        employees.map(employee => (
+                            <tr key={employee.id}>
+                                <Employee key={employee.id} employee={employee} />
+                            </tr>
+                        ))
+                    }
                 </tbody>
             </table>
 
@@ -81,8 +87,8 @@ const EmployeeList = () => {
                 </Modal.Footer>
             </Modal>
 
-            <input ref={myRef} type="text"></input>
-            <button onClick={onButtonClick}>Focus Input</button>
+            {/* <input ref={myRef} type="text"></input>
+            <button onClick={onButtonClick}>Focus Input</button> */}
         </>
     );
 };
