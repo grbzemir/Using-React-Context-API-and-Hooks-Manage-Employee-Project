@@ -17,14 +17,23 @@ const EditForm = ({ theEmployee }) => {
     const [address, setAddress] = useState(employee.address);
     const [phone, setPhone] = useState(employee.phone);
 
+    const updatedEmployee = { id, name, email, address, phone };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        updateEmployee(id, updatedEmployee);
+    };
+
 
     return (
-        <Form>
+        <Form onSubmit={handleSubmit} >
             <FormGroup className="mb-3">
                 <Form.Control
                     type="text"
                     placeholder="Name"
                     name="name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     required
                 />
             </FormGroup>
@@ -34,6 +43,8 @@ const EditForm = ({ theEmployee }) => {
                     type="email"
                     placeholder="Email"
                     name="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     required
                 />
             </FormGroup>
@@ -43,6 +54,8 @@ const EditForm = ({ theEmployee }) => {
                     as="textarea"
                     placeholder="Address"
                     name="address"
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
                     rows={3}
                 />
             </FormGroup>
@@ -52,12 +65,14 @@ const EditForm = ({ theEmployee }) => {
                     type="text"
                     placeholder="Phone"
                     name="phone"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
 
                 />
             </FormGroup>
 
             <Button variant="success" type="submit" className="w-100">
-                Edit New Employee
+                Update Employee
             </Button>
         </Form >
     );

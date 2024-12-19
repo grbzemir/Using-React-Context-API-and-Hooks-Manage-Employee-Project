@@ -1,17 +1,22 @@
 import React from 'react'
 import { EmployeeContext } from '../context/EmployeeContext'
-import { useContext, useState } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { Button, Modal } from 'react-bootstrap';
 import EditForm from './EditForm';
 
 const Employee = ({ employee }) => {
 
-    const deleteEmployee = useContext(EmployeeContext).deleteEmployee;
+    const { deleteEmployee } = useContext(EmployeeContext);
 
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+
+    useEffect(() => {
+        handleClose();
+    }, [employee]);
 
     return (
         <>
@@ -27,7 +32,7 @@ const Employee = ({ employee }) => {
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header className="modal-header" closeButton>
                     <Modal.Title>
-                        Add Employee
+                        Update Employee
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
