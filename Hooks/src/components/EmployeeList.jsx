@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useRef } from 'react';
 import Employee from './Employee';
 import { EmployeeContext } from '../context/EmployeeContext';
 import { Button, Modal } from 'react-bootstrap';
@@ -12,15 +12,27 @@ const EmployeeList = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    // useEffect(() => {
-    //     handleClose();
-    // }, [employees]);
-
     useEffect(() => {
-        console.log(employees);
+        handleClose();
     }, [employees]);
 
-    // const [count, setCount] = useState(0);
+
+    useEffect(() => {
+        console.log("COMPONENT RENDERED");
+    });
+
+
+    //UseRef ile component içindeki componentin tekrardan render edilmesini sağladık ve current özelliği verdik
+
+    const myRef = useRef(null);
+    console.log(myRef.current);
+
+    const onButtonClick = () => {
+
+        console.log(myRef.current);
+        myRef.current.focus();
+
+    };
 
 
     return (
@@ -69,12 +81,8 @@ const EmployeeList = () => {
                 </Modal.Footer>
             </Modal>
 
-            {/* <div>
-                <p>You Clicked {count} times</p>
-                <button onClick={() => setCount(count + 1)}>
-                    Click Me
-                </button>
-            </div> */}
+            <input ref={myRef} type="text"></input>
+            <button onClick={onButtonClick}>Focus Input</button>
         </>
     );
 };
