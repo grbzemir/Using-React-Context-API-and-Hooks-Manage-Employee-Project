@@ -12,9 +12,16 @@ const EmployeeList = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    useEffect(() => {
+    // useEffect(() => {
+    //     handleClose();
+    // }, [employees]);
 
+    useEffect(() => {
+        console.log(employees);
     }, [employees]);
+
+    // const [count, setCount] = useState(0);
+
 
     return (
         <>
@@ -61,6 +68,13 @@ const EmployeeList = () => {
                     </Button>
                 </Modal.Footer>
             </Modal>
+
+            {/* <div>
+                <p>You Clicked {count} times</p>
+                <button onClick={() => setCount(count + 1)}>
+                    Click Me
+                </button>
+            </div> */}
         </>
     );
 };
