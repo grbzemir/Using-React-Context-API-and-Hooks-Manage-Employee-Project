@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState, useRef } from 'react';
 import Employee from './Employee';
 import { EmployeeContext } from '../context/EmployeeContext';
-import { Button, Modal } from 'react-bootstrap';
+import { Button, Modal, Alert } from 'react-bootstrap';
 import AddForm from './AddForm';
 
 const EmployeeList = () => {
@@ -14,10 +14,23 @@ const EmployeeList = () => {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const handleShowAlert = () => setShowAlert(true);
+    // const handleShowAlert = () => setShowAlert(true);
+
+
+    const handleShowAlert = () => {
+
+        setShowAlert(true);
+        setTimeout(() => {
+            setShowAlert(false);
+        }, 2000);
+    };
 
     useEffect(() => {
         handleClose();
+
+        return () => {
+            handleShowAlert();
+        }
     }, [employees]);
 
 
@@ -54,6 +67,13 @@ const EmployeeList = () => {
                     </div>
                 </div>
             </div>
+
+            <Alert show={showAlert} variant="success">
+                {/* <Alert.Heading>Employee List succesfully updated!.</Alert.Heading> */}
+                Employee List succesfully updated!.
+            </Alert>
+
+
             <table className="table table-striped table-hover">
                 <thead>
                     <tr>
