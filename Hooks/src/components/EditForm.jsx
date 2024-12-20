@@ -67,7 +67,6 @@ const EditForm = ({ theEmployee }) => {
                     name="phone"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-
                 />
             </FormGroup>
 

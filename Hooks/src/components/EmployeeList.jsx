@@ -5,12 +5,16 @@ import { Button, Modal } from 'react-bootstrap';
 import AddForm from './AddForm';
 
 const EmployeeList = () => {
+
     const { employees } = useContext(EmployeeContext);
+
+    const [showAlert, setShowAlert] = useState(false);
 
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const handleShowAlert = () => setShowAlert(true);
 
     useEffect(() => {
         handleClose();
@@ -62,7 +66,7 @@ const EmployeeList = () => {
                 </thead>
                 <tbody>
                     {
-                        employees.map(employee => (
+                        employees.sort((a, b) => (a.name < b.name ? -1 : 1)).map(employee => (
                             <tr key={employee.id}>
                                 <Employee key={employee.id} employee={employee} />
                             </tr>
@@ -94,3 +98,6 @@ const EmployeeList = () => {
 };
 
 export default EmployeeList;
+//local compare lar iki string'i karşılaştıran bir yapıdır
+// .sort((a,b) => a.name.localeCompare(b.name))
+//.sort((a, b) => (a.name < b.name ? -1 : 1))
