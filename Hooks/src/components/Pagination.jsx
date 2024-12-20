@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 
 const Pagination = ({ pages, setCurrentPage }) => {
@@ -10,6 +10,11 @@ const Pagination = ({ pages, setCurrentPage }) => {
     }
 
     const [currentButton, setCurrentButton] = useState(1);
+
+    useEffect(() => {
+
+        setCurrentPage(currentButton);
+    }, [currentButton, setCurrentPage])
 
 
     return (

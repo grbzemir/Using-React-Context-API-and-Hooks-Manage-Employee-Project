@@ -7,7 +7,7 @@ import Pagination from './Pagination';
 
 const EmployeeList = () => {
 
-    const { employees } = useContext(EmployeeContext);
+    const { sortedEmployees } = useContext(EmployeeContext);
 
     const [showAlert, setShowAlert] = useState(false);
 
@@ -36,13 +36,13 @@ const EmployeeList = () => {
         return () => {
             handleShowAlert();
         }
-    }, [employees]);
+    }, [sortedEmployees]);
 
 
     const indexOfLastEmployee = currentPage * employeesPerPage;
     const indexOfFirstEmployee = indexOfLastEmployee - employeesPerPage;
-    const currentEmployees = employees.slice(indexOfFirstEmployee, indexOfLastEmployee);
-    const totalPagesNum = Math.ceil(employees.length / employeesPerPage);
+    const currentEmployees = sortedEmployees.slice(indexOfFirstEmployee, indexOfLastEmployee);
+    const totalPagesNum = Math.ceil(sortedEmployees.length / employeesPerPage);
 
 
     useEffect(() => {
@@ -97,7 +97,7 @@ const EmployeeList = () => {
                 </thead>
                 <tbody>
                     {
-                        currentEmployees.sort((a, b) => (a.name < b.name ? -1 : 1)).map(employee => (
+                        currentEmployees.map(employee => (
                             <tr key={employee.id}>
                                 <Employee key={employee.id} employee={employee} />
                             </tr>
