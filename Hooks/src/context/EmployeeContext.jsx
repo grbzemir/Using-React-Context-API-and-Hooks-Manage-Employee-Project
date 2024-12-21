@@ -13,6 +13,7 @@ const EmployeeContextProvider = (props) => {
         { id: uuidv4(), name: 'Eren Efe Yıldız', email: 'ernefeyldz@gmail.com', address: '789 Oak St, İzmir, Türkiye', phone: '(532) 246-8102' },
         { id: uuidv4(), name: 'Zuhal Kaya', email: 'zhlkya@gmail.com', address: '321 Pine St, Bursa, Türkiye', phone: '(532) 135-7913' },
         { id: uuidv4(), name: 'Can Tekin', email: 'cntkn@gmail.com', address: '654 Cedar St, Antalya, Türkiye', phone: '(532) 908-1234' },
+        { id: uuidv4(), name: 'Burcu Aksoy', email: 'brcaksy@gmail.com', address: '432 Cedar St, Muş, Türkiye', phone: '(342) 343-4323' }
 
     ])
 
