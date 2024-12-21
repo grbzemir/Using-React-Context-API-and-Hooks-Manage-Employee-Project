@@ -62,24 +62,25 @@ const EmployeeList = () => {
 
     // };
 
-    const reducer = (state, action) => {
+    // const reducer = (state, action) => {
 
-        switch (action.type) {
-            case 'increment':
-                return { count: state.count + 1 };
+    //     switch (action.type) {
+    //         case 'increment':
+    //             return { count: state.count + 1 };
 
-            case 'decrement':
-                return { count: state.count - 1 };
+    //         case 'decrement':
+    //             return { count: state.count - 1 };
 
-            default:
-                throw new Error();
-        }
-    }
+    //         default:
+    //             throw new Error();
+    //     }
+    // }
 
-    const initialState = 0;
+    // const initialState = { count: 0 };
 
     //initialState başlangıç durumumuzdur bu başlangıç durumuna reducer ile ayarlama yapacağız hangisin çalıştırcağımız ise dispatch tetikleyerek gösterecek
-    const [state, dispatch] = useReducer(reducer, initialState)
+    // const [state, dispatch] = useReducer(reducer, initialState)
+    //dispatch tetikleme işlemi yapar habercidiri
 
 
     return (
@@ -131,6 +132,10 @@ const EmployeeList = () => {
                 currentEmployees={currentEmployees}
                 sortedEmployees={sortedEmployees}
             />
+
+            {/* Count : {state.count}
+            <button onClick={() => dispatch({ type: 'increment' })}>+</button>
+            <button onClick={() => dispatch({ type: 'decrement' })}>-</button> */}
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header className="modal-header" closeButton>

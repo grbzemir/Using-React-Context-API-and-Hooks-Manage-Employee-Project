@@ -1,16 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Form, FormGroup, Button } from 'react-bootstrap';
 import { EmployeeContext } from '../context/EmployeeContext';
-import { useContext } from 'react';
 
 const AddForm = () => {
 
-    const { addEmployee } = useContext(EmployeeContext);
-
-    // const [name, setName] = useState('');
-    // const [email, setEmail] = useState('');
-    // const [address, setAddress] = useState('');
-    // const [phone, setPhone] = useState('');
+    const { dispatch } = useContext(EmployeeContext);
 
     const [newEmployee, setNewEmployee] = useState({
         name: '',
@@ -27,7 +21,19 @@ const AddForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        addEmployee(name, email, address, phone);
+        dispatch({
+            type: 'add_employee',
+            name,
+            email,
+            address,
+            phone
+        });
+        setNewEmployee({
+            name: '',
+            email: '',
+            address: '',
+            phone: ''
+        });
     };
 
     return (
@@ -38,8 +44,7 @@ const AddForm = () => {
                     placeholder="Name"
                     name="name"
                     value={name}
-                    // onChange={(e) => setName(e.target.value)}
-                    onChange={(e) => onInputChange(e)}
+                    onChange={onInputChange}
                     required
                 />
             </FormGroup>
@@ -50,8 +55,7 @@ const AddForm = () => {
                     placeholder="Email"
                     name="email"
                     value={email}
-                    // onChange={(e) => setEmail(e.target.value)}
-                    onChange={(e) => onInputChange(e)}
+                    onChange={onInputChange}
                     required
                 />
             </FormGroup>
@@ -62,8 +66,7 @@ const AddForm = () => {
                     placeholder="Address"
                     name="address"
                     value={address}
-                    // onChange={(e) => setAddress(e.target.value)}
-                    onChange={(e) => onInputChange(e)}
+                    onChange={onInputChange}
                     rows={3}
                 />
             </FormGroup>
@@ -74,9 +77,7 @@ const AddForm = () => {
                     placeholder="Phone"
                     name="phone"
                     value={phone}
-                    // onChange={(e) => setPhone(e.target.value)}
-                    onChange={(e) => onInputChange(e)}
-
+                    onChange={onInputChange}
                 />
             </FormGroup>
 
