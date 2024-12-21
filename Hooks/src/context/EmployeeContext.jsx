@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { use } from 'react';
 import { createContext } from 'react'
 import { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid';
@@ -17,6 +18,21 @@ const EmployeeContextProvider = (props) => {
 
     ])
 
+    useEffect(() => {
+
+        const employees = localStorage.getItem('employees')
+        setEmployees(JSON.parse(employees))
+
+    }, [])
+
+    useEffect(() => {
+
+        localStorage.setItem('employees', JSON.stringify(employees))
+
+    })
+
+
+
     //en başta yolladım nasıl olcanı sıralancağını
 
     const sortedEmployees = employees.sort((a, b) => (a.name < b.name ? -1 : 1));
@@ -34,6 +50,8 @@ const EmployeeContextProvider = (props) => {
         setEmployees(employees.map(employee => (employee.id === id ? updatedEmployee : employee)))
 
     }
+
+
 
     return (
         <div>

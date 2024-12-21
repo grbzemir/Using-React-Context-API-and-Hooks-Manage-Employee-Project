@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, useRef } from 'react';
+import React, { useContext, useEffect, useState, useRef, useReducer } from 'react';
 import Employee from './Employee';
 import { EmployeeContext } from '../context/EmployeeContext';
 import { Button, Modal, Alert } from 'react-bootstrap';
@@ -61,6 +61,25 @@ const EmployeeList = () => {
     //     myRef.current.focus();
 
     // };
+
+    const reducer = (state, action) => {
+
+        switch (action.type) {
+            case 'increment':
+                return { count: state.count + 1 };
+
+            case 'decrement':
+                return { count: state.count - 1 };
+
+            default:
+                throw new Error();
+        }
+    }
+
+    const initialState = 0;
+
+    //initialState başlangıç durumumuzdur bu başlangıç durumuna reducer ile ayarlama yapacağız hangisin çalıştırcağımız ise dispatch tetikleyerek gösterecek
+    const [state, dispatch] = useReducer(reducer, initialState)
 
 
     return (
