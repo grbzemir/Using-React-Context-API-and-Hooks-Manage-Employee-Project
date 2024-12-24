@@ -84,9 +84,11 @@ const EmployeeContextProvider = (props) => {
 
     return (
         <div>
+
             <EmployeeContext.Provider value={{ sortedEmployees, dispatch }}>
                 {props.children}
             </EmployeeContext.Provider>
+
         </div>
     )
 }
